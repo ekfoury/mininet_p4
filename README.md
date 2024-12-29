@@ -1,3 +1,7 @@
+# Mininet P4
+
+This is a fork from the Containernet project. This version adds the P4 Behavioral Model (BMv2) to the Miniedit tool, allowing users to create custom topologies containing P4 switches. 
+
 # Containernet
 
 <img align="left" width="200" height="200" style="margin: 30px 30px 0 0;" src="/assets/logo.png" />
