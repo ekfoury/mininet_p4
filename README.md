@@ -28,11 +28,7 @@ Containernet is a fork of the famous [Mininet](http://mininet.org) network emula
 
 ## Installation
 
-Containernet comes with two installation and deployment options.
-
-### Option 1: Bare-metal installation
-
-This option is the most flexible. Your machine should run at least Ubuntu **22.04 LTS** and **Python3**.
+Your machine should run at least Ubuntu **22.04 LTS** and **Python3**.
 
 First install Ansible:
 
@@ -64,38 +60,6 @@ pip install .
 ```
 
 After the installation finishes, you should be able to [get started](#get-started).
-
-### Option 2: Nested Docker deployment
-
-Containernet can be executed within a privileged Docker container (nested container deployment). There is also a pre-build Docker image available on [Docker Hub](https://hub.docker.com/r/containernet/containernet/).
-
-**Attention:** Container resource limitations, e.g. CPU share limits, are not supported in the nested container deployment. Use bare-metal installations if you need those features.
-
-You can build the container locally:
-
-```bash
-docker build -t containernet/containernet .
-```
-
-or alternatively pull the latest pre-build container:
-
-```bash
-docker pull containernet/containernet
-```
-
-You can then directly start the default containernet example:
-
-```bash
-docker run --name containernet -it --rm --privileged --pid='host' --net='host' -v /var/run/docker.sock:/var/run/docker.sock containernet/containernet
-```
-
-or run an interactive container and drop to the shell:
-
-```bash
-docker run --name containernet -it --rm --privileged --pid='host' --net='host' -v /var/run/docker.sock:/var/run/docker.sock containernet/containernet /bin/bash
-```
-
-If the container takes a very long time to create controllers, then you can try adding `--ulimit nofile=524288:524288` to the docker command. The issue is that mnexec.c tries to close all possibly open file descriptors, which may be set to a very high value. The nofile in the container does not even have to match the nofile value of the host shell.
 
 ## Get started
 
